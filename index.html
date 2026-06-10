@@ -170,33 +170,64 @@
       margin-bottom: 2rem;
     }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 0.5rem;
+    .carousel {
+      position: relative;
+      background: #000;
+      overflow: hidden;
+      aspect-ratio: 3/2;
     }
 
-    .photo-grid img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.92);
-      transition: filter 0.2s;
-    }
-
-    .photo-grid img:hover { filter: brightness(1); }
-
-    .photo-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--mid);
+    .carousel-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      height: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      height: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: var(--white);
+      border: none;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-btn:hover { background: rgba(0,0,0,0.8); }
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+
+    .carousel-counter {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 1rem;
+      background: rgba(0,0,0,0.6);
+      padding: 0.25rem 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      .carousel-btn { width: 2.5rem; height: 2.5rem; font-size: 1.3rem; }
     }
 
     /* ── SPECS ── */
@@ -337,7 +368,7 @@
       <div class="hero-meta">
         <div class="meta-item">
           <span class="meta-label">Mileage</span>
-          <span class="meta-value">70,000 mi</span>
+          <span class="meta-value">71,000 mi</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Condition</span>
@@ -352,25 +383,77 @@
           <span class="meta-value">6-Speed Manual</span>
         </div>
       </div>
-      <!-- UPDATE PRICE BELOW -->
-      <div class="price-tag">$XX,XXX</div>
+      <div class="price-tag">$22,000</div>
     </div>
   </section>
 
   <!-- PHOTOS -->
   <section style="padding-top: 4rem; max-width: 1100px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem;">
     <h2>Photos</h2>
-    <div class="photo-grid" id="photoGrid">
-      <!-- Add <img src="photos/yourfile.jpg" alt="description"> tags here -->
-      <!-- Placeholder cells shown until photos are added -->
-      <div class="photo-placeholder">Front 3/4</div>
-      <div class="photo-placeholder">Rear 3/4</div>
-      <div class="photo-placeholder">Driver Side</div>
-      <div class="photo-placeholder">Passenger Side</div>
-      <div class="photo-placeholder">Engine Bay</div>
-      <div class="photo-placeholder">Interior / Dash</div>
-      <div class="photo-placeholder">Odometer</div>
-      <div class="photo-placeholder">Wheels</div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide"><img src="photos/DSC_0674.JPG" alt="2015 Subaru WRX STI Limited — photo 1" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0675.JPG" alt="2015 Subaru WRX STI Limited — photo 2" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0676.JPG" alt="2015 Subaru WRX STI Limited — photo 3" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0677.JPG" alt="2015 Subaru WRX STI Limited — photo 4" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0678.JPG" alt="2015 Subaru WRX STI Limited — photo 5" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0679.JPG" alt="2015 Subaru WRX STI Limited — photo 6" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0680.JPG" alt="2015 Subaru WRX STI Limited — photo 7" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0681.JPG" alt="2015 Subaru WRX STI Limited — photo 8" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0682.JPG" alt="2015 Subaru WRX STI Limited — photo 9" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0683.JPG" alt="2015 Subaru WRX STI Limited — photo 10" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0684.JPG" alt="2015 Subaru WRX STI Limited — photo 11" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0685.JPG" alt="2015 Subaru WRX STI Limited — photo 12" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0686.JPG" alt="2015 Subaru WRX STI Limited — photo 13" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0687.JPG" alt="2015 Subaru WRX STI Limited — photo 14" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0688.JPG" alt="2015 Subaru WRX STI Limited — photo 15" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0689.JPG" alt="2015 Subaru WRX STI Limited — photo 16" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0690.JPG" alt="2015 Subaru WRX STI Limited — photo 17" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0691.JPG" alt="2015 Subaru WRX STI Limited — photo 18" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0692.JPG" alt="2015 Subaru WRX STI Limited — photo 19" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0693.JPG" alt="2015 Subaru WRX STI Limited — photo 20" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0694.JPG" alt="2015 Subaru WRX STI Limited — photo 21" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0695.JPG" alt="2015 Subaru WRX STI Limited — photo 22" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0696.JPG" alt="2015 Subaru WRX STI Limited — photo 23" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0697.JPG" alt="2015 Subaru WRX STI Limited — photo 24" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0698.JPG" alt="2015 Subaru WRX STI Limited — photo 25" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0699.JPG" alt="2015 Subaru WRX STI Limited — photo 26" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0700.JPG" alt="2015 Subaru WRX STI Limited — photo 27" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0701.JPG" alt="2015 Subaru WRX STI Limited — photo 28" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0702.JPG" alt="2015 Subaru WRX STI Limited — photo 29" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0703.JPG" alt="2015 Subaru WRX STI Limited — photo 30" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0704.JPG" alt="2015 Subaru WRX STI Limited — photo 31" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0705.JPG" alt="2015 Subaru WRX STI Limited — photo 32" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0706.JPG" alt="2015 Subaru WRX STI Limited — photo 33" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0707.JPG" alt="2015 Subaru WRX STI Limited — photo 34" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0708.JPG" alt="2015 Subaru WRX STI Limited — photo 35" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0709.JPG" alt="2015 Subaru WRX STI Limited — photo 36" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0710.JPG" alt="2015 Subaru WRX STI Limited — photo 37" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0711.JPG" alt="2015 Subaru WRX STI Limited — photo 38" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0712.JPG" alt="2015 Subaru WRX STI Limited — photo 39" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0713.JPG" alt="2015 Subaru WRX STI Limited — photo 40" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0714.JPG" alt="2015 Subaru WRX STI Limited — photo 41" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0715.JPG" alt="2015 Subaru WRX STI Limited — photo 42" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0716.JPG" alt="2015 Subaru WRX STI Limited — photo 43" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0717.JPG" alt="2015 Subaru WRX STI Limited — photo 44" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0718.JPG" alt="2015 Subaru WRX STI Limited — photo 45" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0719.JPG" alt="2015 Subaru WRX STI Limited — photo 46" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0720.JPG" alt="2015 Subaru WRX STI Limited — photo 47" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0721.JPG" alt="2015 Subaru WRX STI Limited — photo 48" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0722.JPG" alt="2015 Subaru WRX STI Limited — photo 49" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0723.JPG" alt="2015 Subaru WRX STI Limited — photo 50" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0724.JPG" alt="2015 Subaru WRX STI Limited — photo 51" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0725.JPG" alt="2015 Subaru WRX STI Limited — photo 52" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0726.JPG" alt="2015 Subaru WRX STI Limited — photo 53" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0727.JPG" alt="2015 Subaru WRX STI Limited — photo 54" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0728.JPG" alt="2015 Subaru WRX STI Limited — photo 55" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0729.JPG" alt="2015 Subaru WRX STI Limited — photo 56" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0730.JPG" alt="2015 Subaru WRX STI Limited — photo 57" loading="lazy"></div>
+      <div class="carousel-slide"><img src="photos/DSC_0731.JPG" alt="2015 Subaru WRX STI Limited — photo 58" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous photo">‹</button>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Next photo">›</button>
+      <div class="carousel-counter" id="carouselCounter">1 / 58</div>
     </div>
   </section>
 
@@ -381,7 +464,7 @@
       <div class="spec-cell"><div class="label">Year</div><div class="value">2015</div></div>
       <div class="spec-cell"><div class="label">Make / Model</div><div class="value">Subaru WRX STI</div></div>
       <div class="spec-cell"><div class="label">Trim</div><div class="value highlight">Limited</div></div>
-      <div class="spec-cell"><div class="label">Mileage</div><div class="value highlight">70,000</div></div>
+      <div class="spec-cell"><div class="label">Mileage</div><div class="value highlight">71,000</div></div>
       <div class="spec-cell"><div class="label">Engine</div><div class="value">2.5L Turbocharged Boxer</div></div>
       <div class="spec-cell"><div class="label">Power</div><div class="value">305 hp</div></div>
       <div class="spec-cell"><div class="label">Drivetrain</div><div class="value">Symmetrical AWD</div></div>
@@ -396,7 +479,7 @@
     <h2>About This Car</h2>
     <div class="details-body">
       <p>
-        This is a clean, single-owner 2015 WRX STI Limited with 70k miles. 
+        This is a clean, two owner 2015 WRX STI Limited with 71k miles. 
         It has been well maintained throughout its life and presents in excellent condition 
         inside and out. Stock configuration — no modifications.
       </p>
@@ -408,15 +491,20 @@
 
     <ul class="feature-list">
       <li>Limited trim package</li>
-      <li>Brembo brakes</li>
-      <li>Recaro front seats</li>
-      <li>STI lip spoiler</li>
-      <li>18" BBS wheels</li>
+      <li>Brembo brakes w/ red calipers</li>
+      <li>Leather-trimmed heated front seats</li>
+      <li>Functional STI rear wing</li>
+      <li>18" BBS forged alloy wheels</li>
       <li>Keyless access / push-button start</li>
       <li>Harman Kardon audio</li>
       <li>Dual-zone climate control</li>
       <li>SI-Drive performance modes</li>
       <li>Driver Controlled Center Differential</li>
+      <li>Torsen limited-slip rear differential</li>
+      <li>Multi-mode Vehicle Dynamics Control (VDC)</li>
+      <li>HID headlights w/ auto-leveling</li>
+      <li>Bluetooth hands-free &amp; audio streaming</li>
+      <li>Includes mounted snow tire set (no rims)</li>
       <li>No accidents on Carfax</li>
       <li>Colorado title, ready to transfer</li>
     </ul>
@@ -425,15 +513,36 @@
   <!-- CONTACT -->
   <div class="contact-section">
     <h2>Serious Inquiries</h2>
-    <p>Located in Loveland, CO. Available for inspection and test drive by appointment.</p>
-    <!-- REPLACE href values below with your actual phone / email -->
-    <a class="contact-btn" href="tel:+19705550000">Call or Text</a>
-    <a class="contact-btn" href="mailto:you@email.com">Email</a>
+    <p>Located in Loveland, CO. Available for inspection by appointment. No test drives.</p>
+    <a class="contact-btn" href="tel:+18142805949">Call or Text — 814-280-5949</a>
   </div>
 
   <footer>
     2015 Subaru WRX STI Limited &nbsp;·&nbsp; Loveland, CO 80538 &nbsp;·&nbsp; Private Party Sale
   </footer>
 
+  <script>
+    (function () {
+      const track = document.getElementById('carouselTrack');
+      const counter = document.getElementById('carouselCounter');
+      const slides = track.children;
+      const total = slides.length;
+      let index = 0;
+
+      function update() {
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        counter.textContent = (index + 1) + ' / ' + total;
+      }
+
+      document.getElementById('carouselPrev').addEventListener('click', function () {
+        index = (index - 1 + total) % total;
+        update();
+      });
+      document.getElementById('carouselNext').addEventListener('click', function () {
+        index = (index + 1) % total;
+        update();
+      });
+    })();
+  </script>
 </body>
 </html>
