@@ -1,6 +1,6 @@
 # 2015 Subaru WRX STI Limited — For Sale Listing
 
-Static one-page car listing site. Drop into any static host (Netlify Drop, GitHub Pages, etc.).
+Static one-page car listing site, built to run on GitHub Pages.
 
 ---
 
@@ -16,16 +16,8 @@ Drop images into the `photos/` folder, then run:
 
 This regenerates `photos/manifest.js`, which the page reads to build the photo carousel automatically — no need to edit `index.html`. Run it again any time you add or remove photos. The carousel supports click-to-zoom (full size view) and left/right arrow key navigation.
 
-**Hero image:** Name your best exterior shot `photos/hero.jpg` (it's excluded from the carousel automatically) and add this to the `<style>` block (or inline on `.hero-photo`):
-
-```css
-.hero-photo {
-  background-image: url('photos/hero.jpg');
-}
-```
-
 Recommended shots (in priority order):
-- Front 3/4 (hero candidate)
+- Front 3/4
 - Rear 3/4
 - Both sides straight-on
 - Engine bay
@@ -64,21 +56,15 @@ The `<ul class="feature-list">` is pre-filled with standard STI Limited features
 
 ---
 
-## Deploying
+## Publishing to GitHub Pages
 
-### Netlify Drop (fastest)
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop)
-2. Drag the entire folder (with `photos/` subfolder) onto the page
-3. Live in ~30 seconds — you'll get a URL like `https://random-name.netlify.app`
-
-### GitHub Pages
 ```bash
-git init
 git add .
-git commit -m "Initial listing"
-gh repo create sti-listing --public --source=. --push
-# Then enable Pages in repo Settings → Pages → Deploy from branch: main / root
+git commit -m "Update listing"
+git push
 ```
+
+Then in the repo, go to **Settings → Pages** and set **Deploy from branch: main / root**.
 
 ---
 

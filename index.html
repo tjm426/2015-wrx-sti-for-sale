@@ -28,70 +28,12 @@
       line-height: 1.6;
     }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, #001a4d 0%, #000 60%);
-    }
-
-    /* Gold rally stripe — the signature element */
-    .hero-stripe {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 38%;
-      width: 6px;
-      background: var(--gold);
-      opacity: 0.6;
-      transform: skewX(-4deg);
-    }
-    .hero-stripe::before {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: -14px;
-      width: 2px;
-      background: var(--gold);
-      opacity: 0.4;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      background: url('photos/hero.jpg') center / cover no-repeat;
-      opacity: 0.55;
-    }
-    .hero-photo.placeholder {
-      /* shown when hero.jpg isn't present */
-      background: linear-gradient(135deg, #001a4d 0%, #111 100%);
-      opacity: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-photo.placeholder span {
-      color: var(--muted);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 3rem 2rem 4rem;
-      max-width: 800px;
+    /* ── HEADER ── */
+    .page-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--gold);
     }
 
     .eyebrow {
@@ -104,11 +46,19 @@
       margin-bottom: 0.75rem;
     }
 
+    .header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
     h1 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
       font-weight: 800;
-      line-height: 0.95;
+      line-height: 1;
       text-transform: uppercase;
       letter-spacing: -0.01em;
     }
@@ -118,34 +68,7 @@
       -webkit-text-stroke: 1px #4477cc;
     }
 
-    .hero-meta {
-      display: flex;
-      gap: 2rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .meta-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .meta-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
     .price-tag {
-      margin-top: 2rem;
       display: inline-block;
       background: var(--gold);
       color: var(--dark);
@@ -154,6 +77,7 @@
       font-weight: 800;
       padding: 0.4rem 1.2rem;
       letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     /* ── PHOTOS GRID ── */
@@ -376,68 +300,21 @@
     }
 
     @media (max-width: 600px) {
-      .hero-content { padding: 2rem 1.25rem 3rem; }
+      .page-header { padding: 2rem 1.25rem 1.5rem; }
       .contact-btn + .contact-btn { margin-left: 0; margin-top: 0.75rem; display: block; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-stripe"></div>
-    <div class="hero-photo" id="heroBg">
-      <!-- Set background-image via JS if hero.jpg exists, or show placeholder -->
-    </div>
-    <div class="hero-content">
-      <p class="eyebrow">Loveland, CO &nbsp;·&nbsp; Private Party Sale</p>
-      <h1>
-        2015<br>
-        <span class="model">WRX STI</span><br>
-        Limited
-      </h1>
-      <div class="hero-meta">
-        <div class="meta-item">
-          <span class="meta-label">Mileage</span>
-          <span class="meta-value">71,000 mi</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Condition</span>
-          <span class="meta-value">Excellent</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Color</span>
-          <span class="meta-value">Dark Gray Metallic</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Transmission</span>
-          <span class="meta-value">6-Speed Manual</span>
-        </div>
-      </div>
+  <!-- HEADER -->
+  <header class="page-header">
+    <p class="eyebrow">Loveland, CO &nbsp;·&nbsp; Private Party Sale</p>
+    <div class="header-row">
+      <h1>2015 <span class="model">WRX STI</span> Limited</h1>
       <div class="price-tag">$22,000</div>
     </div>
-  </section>
-
-  <!-- PHOTOS -->
-  <section style="padding-top: 4rem; max-width: 1100px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem;">
-    <h2>Photos</h2>
-    <p style="color: #888; font-size: 0.85rem; margin-bottom: 1rem;">Click a photo to view full size. Use the arrow keys to move between photos.</p>
-    <div class="carousel" id="carousel">
-      <div class="carousel-track" id="carouselTrack"></div>
-      <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous photo">‹</button>
-      <button class="carousel-btn next" id="carouselNext" aria-label="Next photo">›</button>
-      <div class="carousel-counter" id="carouselCounter"></div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <button class="carousel-btn prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
-    <img id="lightboxImg" src="" alt="">
-    <button class="carousel-btn next" id="lightboxNext" aria-label="Next photo">›</button>
-  </div>
+  </header>
 
   <!-- SPECS -->
   <section>
@@ -455,6 +332,26 @@
       <div class="spec-cell"><div class="label">Title</div><div class="value">Clean — Colorado</div></div>
     </div>
   </section>
+
+  <!-- PHOTOS -->
+  <section>
+    <h2>Photos</h2>
+    <p style="color: #888; font-size: 0.85rem; margin-bottom: 1rem;">Click a photo to view full size. Use the arrow keys to move between photos.</p>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous photo">‹</button>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Next photo">›</button>
+      <div class="carousel-counter" id="carouselCounter"></div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="carousel-btn prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="carousel-btn next" id="lightboxNext" aria-label="Next photo">›</button>
+  </div>
 
   <!-- DETAILS -->
   <section>
