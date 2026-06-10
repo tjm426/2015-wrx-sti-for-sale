@@ -8,15 +8,15 @@ Static one-page car listing site. Drop into any static host (Netlify Drop, GitHu
 
 ### 1. Add your photos
 
-Create a `photos/` folder next to `index.html` and drop your images in. Then replace the placeholder `<div>` blocks in the **Photos** section of `index.html` with actual `<img>` tags:
+Drop images into the `photos/` folder, then run:
 
-```html
-<img src="photos/front-34.jpg" alt="Front 3/4 view" />
-<img src="photos/rear-34.jpg" alt="Rear 3/4 view" />
-<!-- etc. -->
+```bash
+./update-photos.sh
 ```
 
-**Hero image:** Name your best exterior shot `photos/hero.jpg` and add this to the `<style>` block (or inline on `.hero-photo`):
+This regenerates `photos/manifest.js`, which the page reads to build the photo carousel automatically — no need to edit `index.html`. Run it again any time you add or remove photos. The carousel supports click-to-zoom (full size view) and left/right arrow key navigation.
+
+**Hero image:** Name your best exterior shot `photos/hero.jpg` (it's excluded from the carousel automatically) and add this to the `<style>` block (or inline on `.hero-photo`):
 
 ```css
 .hero-photo {
